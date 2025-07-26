@@ -39,16 +39,16 @@ dyma-tennis-project/
 
 ## ⚙️ Lancer l'application
 
-1. Cloner le dépôt :
-   git clone https://github.com/<ton-utilisateur>/dyma-tennis-project.git
-   cd dyma-tennis-project
-
+1. Cloner le dépôt :  
+```bash
+git clone https://github.com/<ton-utilisateur>/dyma-tennis-project.git  
+cd dyma-tennis-project
+```
 2. Lancer l'application depuis un IDE ou en ligne de commande :
 ``` bash
 ./mvnw spring-boot:run
 ```
-3. L'API sera accessible à l'adresse :
-   http://localhost:8080
+3. L'API sera accessible à l'adresse : http://localhost:8080
 
 ## 🔍 Fonctionnalités de l'API
 

@@ -1,0 +1,16 @@
+version: '3.8'
+
+name: dyma-tennis-project
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb
+    environment:
+      - MYSQL_USER=mariadb
+      - MYSQL_PASSWORD=123456
+      - MYSQL_DATABASE=dymaTennis
+      - MYSQL_ROOT_PASSWORD=123456
+    ports:
+      - '3306:3306'
+    volumes:
+      - ~/mariadb-data:/var/lib/mysql/data
