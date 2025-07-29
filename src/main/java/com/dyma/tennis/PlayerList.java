@@ -35,5 +35,5 @@ public class PlayerList {
             new Rank(4, 2000)
     );
 
-    public static List<Player> ALL = Arrays.asList(NADAL_RAFAEL, NOVAK_DJOKOVIC, ROGER_FEDERER, ANDY_MURRAY);
+    public static List<Player> ALL = Arrays.asList(ANDY_MURRAY, NOVAK_DJOKOVIC, NADAL_RAFAEL, ROGER_FEDERER );
 }
