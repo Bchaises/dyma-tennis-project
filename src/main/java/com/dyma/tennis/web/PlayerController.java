@@ -59,6 +59,10 @@ public class PlayerController {
                     description = "Created Player",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = PlayerToSave.class))}),
+            @ApiResponse(responseCode = "400",
+                    description = "Player with specified last name already exists",
+                    content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = Error.class))})
     })
     @PostMapping
     public Player create(@Valid @RequestBody PlayerToSave playerToSave){
