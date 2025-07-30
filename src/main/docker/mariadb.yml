@@ -1,5 +1,3 @@
-version: '3.8'
-
 name: dyma-tennis-project
 services:
   mariadb:
@@ -13,4 +11,5 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - ~/mariadb-data:/var/lib/mysql/data
+      - ./mariadb-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
