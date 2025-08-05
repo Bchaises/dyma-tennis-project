@@ -31,6 +31,7 @@ public class PlayerController {
                     description = "PLayers list",
                     content = {@Content(mediaType = "application/json",
                             array = @ArraySchema(schema = @Schema(implementation = Player.class)))}),
+            @ApiResponse(responseCode = "403", description = "This user is not authorized to perform this action.")
     })
     @GetMapping
     public List<Player> list(){
@@ -46,7 +47,8 @@ public class PlayerController {
             @ApiResponse(responseCode = "404",
                     description = "Player with specified last name was not found",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Error.class))})
+                            schema = @Schema(implementation = Error.class))}),
+            @ApiResponse(responseCode = "403", description = "This user is not authorized to perform this action.")
     })
     @GetMapping("{lastName}")
     public Player getByLastName(@PathVariable("lastName") String lastName){
@@ -62,7 +64,8 @@ public class PlayerController {
             @ApiResponse(responseCode = "400",
                     description = "Player with specified last name already exists",
                     content = {@Content(mediaType = "application/json",
-            schema = @Schema(implementation = Error.class))})
+            schema = @Schema(implementation = Error.class))}),
+            @ApiResponse(responseCode = "403", description = "This user is not authorized to perform this action.")
     })
     @PostMapping
     public Player create(@Valid @RequestBody PlayerToSave playerToSave){
@@ -78,7 +81,8 @@ public class PlayerController {
             @ApiResponse(responseCode = "404",
                     description = "Player with specified last name was not found",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Error.class))})
+                            schema = @Schema(implementation = Error.class))}),
+            @ApiResponse(responseCode = "403", description = "This user is not authorized to perform this action.")
     })
     @PutMapping
     public Player update(@Valid @RequestBody PlayerToSave playerToSave){
@@ -91,7 +95,8 @@ public class PlayerController {
             @ApiResponse(responseCode = "404",
                     description = "Player with specified last name was not found",
                     content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Error.class))})
+                            schema = @Schema(implementation = Error.class))}),
+            @ApiResponse(responseCode = "403", description = "This user is not authorized to perform this action.")
     })
     @DeleteMapping("{lastName}")
     public void deleteByLastName(@PathVariable("lastName") String lastName){
