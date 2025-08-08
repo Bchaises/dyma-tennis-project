@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,24 +28,23 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
-        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(DymaUserDetailsService);
+    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider(DymaUserDetailsService);
         authenticationProvider.setPasswordEncoder(passwordEncoder);
 
-        return new ProviderManager(authenticationProvider);
+        return authenticationProvider;
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationProvider authenticationProvider) throws Exception {
         http.
-                csrf(csrf -> csrf.disable())
+                csrf(AbstractHttpConfigurer::disable)
                 .headers(header ->
                         header
                                 .contentSecurityPolicy(csp ->
-                                    csp.policyDirectives("default src 'self' data:;style-src 'self' 'unsafe-inline';")
+                                    csp.policyDirectives("default-src 'self' data:;style-src 'self' 'unsafe-inline';")
                                 )
-                                .frameOptions(frameOptions -> frameOptions.deny())
+                                .frameOptions(HeadersConfigurer.FrameOptionsConfig::deny)
                                 .permissionsPolicyHeader(permissionsPolicyConfig ->
                                     permissionsPolicyConfig.policy("fullscreen=(self), geolocation=(), microphone=(), camera=()")
                                 )
@@ -59,7 +59,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/v3/api-docs/**").permitAll()
                         .requestMatchers("/accounts/login").permitAll()
                         .anyRequest().authenticated()
-                );
+                ).authenticationProvider(authenticationProvider);
         return http.build();
     }
 }
