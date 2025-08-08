@@ -50,6 +50,12 @@ cd dyma-tennis-project
 ``` bash
 ./mvnw spring-boot:run
 ```
+ou dans un environnement de production en spécifiant les arguments de la datasource :  
+``` bash
+./mvnw clean spring-boot:run \
+-Dspring-boot.run.profiles=prod \
+-Dspring-boot.run.arguments="--spring.datasource.url= --spring.datasource.username= --spring.datasource.password="
+```
 3. L'API sera accessible à l'adresse : http://localhost:8080
 
 ## 🔍 Fonctionnalités de l'API

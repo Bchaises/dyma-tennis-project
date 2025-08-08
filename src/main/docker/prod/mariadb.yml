@@ -2,14 +2,14 @@ name: dyma-tennis-project
 services:
   dyma-mariadb:
     image: mariadb:11.6
-    container_name: dyma-mariadb-development
+    container_name: dyma-mariadb-production
     environment:
       - MYSQL_USER=mariadb
-      - MYSQL_PASSWORD=123456
+      - MYSQL_PASSWORD=ftRcy9Nj?gPhHDF
       - MYSQL_DATABASE=dymaTennis
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=ftRcy9Nj?gPhHDF
     ports:
-      - '3306:3306'
+      - '3307:3307'
     volumes:
       - ./mariadb-data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
