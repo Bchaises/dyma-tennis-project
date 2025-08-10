@@ -58,6 +58,25 @@ ou dans un environnement de production en spécifiant les arguments de la dataso
 ```
 3. L'API sera accessible à l'adresse : http://localhost:8080
 
+## Mise en production
+
+1. Lancement de la base de données MariaDB dans docker compose :   
+```bash
+ docker compose -f src/main/docker/prod/mariadb.yml up -d
+```
+2. Création de l'image docker :   
+```bash
+docker build -t dyma-tennis-api .
+```
+3Lancement du container avec l'image et les arguments :   
+```bash
+docker run --name dyma-tennis -p 8080:8080 \
+-e SPRING_DATASOURCE_URL="jdbc:mariadb://dyma-mariadb-production:3306/mariadb" \
+-e SPRING_DATASOURCE_USERNAME="mariadb" \
+-e SPRING_DATASOURCE_PASSWORD="ftRcy9Nj?gPhHDF" \
+ dyma-tennis-api
+```
+
 ## 🔍 Fonctionnalités de l'API
 
 - Gestion des joueurs `/joueurs`

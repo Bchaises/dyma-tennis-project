@@ -9,7 +9,7 @@ services:
       - MYSQL_DATABASE=dymaTennis
       - MYSQL_ROOT_PASSWORD=ftRcy9Nj?gPhHDF
     ports:
-      - '3307:3307'
+      - '3306:3307'
     volumes:
       - ./mariadb-data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
