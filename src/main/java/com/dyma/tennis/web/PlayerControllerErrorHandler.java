@@ -2,6 +2,7 @@ package com.dyma.tennis.web;
 
 import com.dyma.tennis.Error;
 import com.dyma.tennis.service.PlayerAlreadyExistsException;
+import com.dyma.tennis.service.PlayerDataRetrievalException;
 import com.dyma.tennis.service.PlayerNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -38,5 +39,11 @@ public class PlayerControllerErrorHandler {
             errors.put(fieldName, errorMessage);
         });
         return errors;
+    }
+
+    @ExceptionHandler(PlayerDataRetrievalException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Error handlePlayerDataRetrievalException(PlayerDataRetrievalException ex){
+        return new Error(ex.getMessage());
     }
 }
