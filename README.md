@@ -18,6 +18,7 @@ Bienvenue dans le projet **Dyma Tennis**, réalisé dans le cadre de la formatio
 - Spring Data JPA
 - Spring Web
 - Spring Security
+- Spring Actuator
 - MariaDB
 - Lombok
 - Maven
@@ -108,6 +109,9 @@ Une fois l'application lancée, tu peux accéder :
   👉 [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
 - à l'interface Swagger UI, pour tester les endpoints directement depuis le navigateur :  
   👉 [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+## Metrics
+Le projet implémente Spring Boot Actuator qui permet, pour un utilisateur authentifié en tant qu'administrateur, de suivre les statistiques de l'application.
 
 ## 💡 À propos
 
