@@ -1,8 +1,8 @@
 package com.dyma.tennis.web;
 
-import com.dyma.tennis.Error;
-import com.dyma.tennis.Player;
-import com.dyma.tennis.PlayerToSave;
+import com.dyma.tennis.model.Error;
+import com.dyma.tennis.model.Player;
+import com.dyma.tennis.model.PlayerToSave;
 import com.dyma.tennis.service.PlayerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;

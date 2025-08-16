@@ -1,4 +1,4 @@
-package com.dyma.tennis;
+package com.dyma.tennis.model;
 
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;

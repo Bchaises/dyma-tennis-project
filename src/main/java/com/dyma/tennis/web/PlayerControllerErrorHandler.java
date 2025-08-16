@@ -1,6 +1,6 @@
 package com.dyma.tennis.web;
 
-import com.dyma.tennis.Error;
+import com.dyma.tennis.model.Error;
 import com.dyma.tennis.service.PlayerAlreadyExistsException;
 import com.dyma.tennis.service.PlayerDataRetrievalException;
 import com.dyma.tennis.service.PlayerNotFoundException;

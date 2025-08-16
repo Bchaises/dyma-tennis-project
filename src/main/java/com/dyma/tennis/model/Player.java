@@ -1,10 +1,9 @@
-package com.dyma.tennis;
+package com.dyma.tennis.model;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 

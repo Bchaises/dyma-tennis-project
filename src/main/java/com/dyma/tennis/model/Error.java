@@ -1,4 +1,4 @@
-package com.dyma.tennis;
+package com.dyma.tennis.model;
 
 public record Error(String errorDetails) {
 }

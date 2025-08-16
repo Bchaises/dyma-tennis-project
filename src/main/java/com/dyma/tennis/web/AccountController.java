@@ -1,6 +1,6 @@
 package com.dyma.tennis.web;
 
-import com.dyma.tennis.UserCredentials;
+import com.dyma.tennis.model.UserCredentials;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
